@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleduc <marvin@42quebec.com>               +#+  +:+       +#+        */
+/*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 15:35:14 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/12 12:09:38 by fleduc           ###   ########.fr       */
+/*   Created: 2022/05/24 17:12:47 by fleduc            #+#    #+#             */
+/*   Updated: 2022/05/24 17:12:51 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	check_if_number(char *arg)
@@ -44,7 +45,8 @@ int	check_if_dup(char **args, int count, int mp_strs)
 		j = i + 1;
 		while (j < count)
 		{
-			if (ft_strcmp((char *)args[i + mp_strs], (char *)args[j + mp_strs]) == 0)
+			if (ft_strcmp((char *)args[i + mp_strs],
+					(char *)args[j + mp_strs]) == 0)
 				return (1);
 			++j;
 		}

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   both_ops.c                                         :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 17:11:40 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/24 17:13:17 by fleduc           ###   ########.fr       */
+/*   Created: 2022/05/24 22:00:05 by fleduc            #+#    #+#             */
+/*   Updated: 2022/05/25 00:20:16 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_ab(t_intlist **stack_a, t_intlist **stack_b)
+int	get_max(t_intlist **stack)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
-	write(1, "ss\n", 3);
-}
+	t_intlist	*tmp;
+	int			max;
 
-void	rotate_ab(t_intlist **stack_a, t_intlist **stack_b)
-{
-	rotate_a(stack_a);
-	rotate_b(stack_b);
-	write(1, "rr\n", 3);
-}
-
-void	reverse_rotate_ab(t_intlist **stack_a, t_intlist **stack_b)
-{
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
-	write(1, "rrr\n", 4);
+	tmp = *stack;
+	max = (*stack)->content;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		if (max < tmp->content)
+			max = tmp->content;
+	}
+	return (max);
 }
