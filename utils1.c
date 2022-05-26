@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:40:54 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/24 17:49:18 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/05/26 17:16:34 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	find_index(t_intlist **stack, int c)
 
 	iterate = *stack;
 	i = 1;
-	while (iterate->content != c)
+	if (iterate == NULL)
+		return (0);
+	while (iterate->next != NULL && iterate->content != c)
 	{
 		++i;
 		iterate = iterate->next;
@@ -32,6 +34,8 @@ int	list_len(t_intlist **stack)
 	t_intlist	*iterate;
 	int			i;
 
+	if (*stack == NULL)
+		return (0);
 	iterate = *stack;
 	i = 0;
 	while (iterate)

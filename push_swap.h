@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:35 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/25 00:20:17 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/05/26 17:16:36 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ void	small(int count, t_intlist **stack_a, t_intlist **stack_b);
 void	big(int count, t_intlist **stack_a, t_intlist **stack_b);
 void	three(t_intlist **stack_a);
 void	four_to_nine(int count, t_intlist **a, t_intlist **b);
-void	ten_to_infinite(int count, t_intlist **a, t_intlist **b);
-void	radix_sort(int size, t_intlist **a, t_intlist **b);
-void	count_sort(t_intlist **a, int size, int place);
-//void	a_pusher(int count, t_intlist **a, t_intlist **b);
-//void	b_pusher(int count, t_intlist **a, t_intlist **b);
+void	ten_to_infinite(int count, int chunk, t_intlist **a, t_intlist **b);
+void	align_b(t_intlist **b, int sm);
 
 int		find_index(t_intlist **a, int c);
 int		list_len(t_intlist **stack);
 int		ft_len(char **double_str);
 int		check_order(t_intlist **stack_a);
 void	new_node(t_intlist **stack);
+int		get_min(t_intlist **stack, int chunk);
+int		get_max(t_intlist **stack);
+int		see_smaller(t_intlist **stack, int num);
+void	rotate_stack_b(t_intlist **stack, int num);
+void	rotate_stack_a(t_intlist **stack, int num);
 
 void	swap_a(t_intlist **stack);
 void	swap_b(t_intlist **stack);

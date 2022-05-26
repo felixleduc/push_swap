@@ -6,13 +6,13 @@
 #    By: fleduc <marvin@42quebec.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 17:29:15 by fleduc            #+#    #+#              #
-#    Updated: 2022/05/24 19:10:07 by fleduc           ###   ########.fr        #
+#    Updated: 2022/05/26 11:51:43 by fleduc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
 
 SRCS = push_swap.c errors.c ops1.c ops2.c both_ops.c small.c utils1.c utils2.c big.c

@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:41:01 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/25 00:20:17 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/05/26 17:16:35 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,13 @@
 void	four_to_nine(int count, t_intlist **a, t_intlist **b)
 {
 	t_intlist	*iterate;
-	t_intlist	*smallest;
-	int			lst_len;
+	int			sm;
 
+	iterate = (*a);
 	while (--count >= 0)
 	{
-		iterate = (*a)->next;
-		smallest = *a;
-		while (iterate)
-		{
-			if (smallest->content > iterate->content)
-				smallest = iterate;
-			iterate = iterate->next;
-		}
-		while ((*a)->content != smallest->content)
-		{
-			lst_len = list_len(a);
-			if (lst_len % 2 != 0)
-				++lst_len;
-			if (find_index(a, smallest->content) <= (lst_len / 2))
-				rotate_a(a);
-			else
-				reverse_rotate_a(a);
-		}
+		sm = get_min(a, count);
+		rotate_stack_a(a, sm);
 		push_b(a, b);
 	}
 	three(a);
