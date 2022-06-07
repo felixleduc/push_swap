@@ -6,18 +6,17 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:35 by fleduc            #+#    #+#             */
-/*   Updated: 2022/06/07 15:09:16 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:17:24 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h> //enlever avant remise
 
 typedef struct s_intlist
 {
@@ -47,7 +46,6 @@ int		find_index(t_intlist **a, int c);
 int		list_len(t_intlist **stack);
 int		ft_len(char **double_str);
 int		check_order(t_intlist **stack_a);
-void	new_node(t_intlist **stack);
 int		get_min(t_intlist **stack, int chunk);
 int		get_max(t_intlist **stack);
 int		see_smaller(t_intlist **stack, int num);
