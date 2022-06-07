@@ -6,11 +6,21 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:11 by fleduc            #+#    #+#             */
-/*   Updated: 2022/06/07 15:17:54 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:50:12 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	clean_str(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
 
 void	clean(t_intlist **stack_a)
 {
@@ -32,8 +42,6 @@ void	fill_stack(t_intlist **stack_a, t_intlist **stack_b, int c, char **num)
 	int			i;
 
 	i = 0;
-	if (!(num[0][0] >= '0' && num[0][0] <= '9') || num[0][0] == '-')
-		i += 1;
 	*stack_a = (t_intlist *)malloc(sizeof(t_intlist));
 	*stack_b = NULL;
 	ptr = *stack_a;

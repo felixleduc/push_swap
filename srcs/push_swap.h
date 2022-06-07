@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:35 by fleduc            #+#    #+#             */
-/*   Updated: 2022/06/07 15:17:24 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:50:13 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h> //a supprimer
 
 typedef struct s_intlist
 {
@@ -28,6 +29,7 @@ int		main(int argc, char *argv[]);
 void	fill_stack(t_intlist **stack_a, t_intlist **stack_b, int c, char **num);
 void	redirect(int count, t_intlist **stack_a, t_intlist **stack_b);
 void	clean(t_intlist **stack_a);
+void	clean_str(char **str);
 
 int		check_errors(char **splitted, int argc);
 int		check_if_dup(char **args, int count);
@@ -47,6 +49,7 @@ int		list_len(t_intlist **stack);
 int		ft_len(char **double_str);
 int		check_order(t_intlist **stack_a);
 int		get_min(t_intlist **stack, int chunk);
+char	**rm_first(char **arg, int argc);
 int		get_max(t_intlist **stack);
 int		see_smaller(t_intlist **stack, int num);
 void	rotate_stack_b(t_intlist **stack, int num);

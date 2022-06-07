@@ -6,18 +6,18 @@
 #    By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 17:29:15 by fleduc            #+#    #+#              #
-#    Updated: 2022/06/07 15:18:32 by fleduc           ###   ########.fr        #
+#    Updated: 2022/06/07 15:36:35 by fleduc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 NAME_BONUS = checker
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
 
 SRCS = srcs/push_swap.c srcs/errors.c srcs/ops1.c srcs/ops2.c srcs/both_ops.c \
-		srcs/small.c srcs/utils1.c srcs/utils2.c srcs/big.c srcs/rm_first.c
+		srcs/small.c srcs/utils1.c srcs/utils2.c srcs/big.c
 
 SRCS_BONUS = bonus/main_bonus.c bonus/errors_bonus.c bonus/utils1_bonus.c \
 		bonus/ops1_bonus.c bonus/ops2_bonus.c bonus/both_ops_bonus.c
