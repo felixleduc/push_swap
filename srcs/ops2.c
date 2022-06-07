@@ -25,37 +25,29 @@ void	swap_b(t_intlist **stack)
 
 void	push_b(t_intlist **stack_a, t_intlist **stack_b)
 {
-	t_intlist	*new;
 	t_intlist	*tmp;
 
-	if (!stack_a || !stack_b)
+	if (!(*stack_a))
 		return ;
-	new_node(&new);
-	new->content = (*stack_a)->content;
-	new->next = (*stack_b);
-	(*stack_b) = new;
-	tmp = (*stack_a);
-	(*stack_a) = (*stack_a)->next;
-	free(tmp);
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	tmp->next = (*stack_b);
+	*stack_b = tmp;
 	write(1, "pb\n", 3);
 }
 
 void	rotate_b(t_intlist **stack)
 {
-	t_intlist	*iterate;
 	t_intlist	*rot;
-	t_intlist	*first_node;
+	t_intlist	*tmp;
 
-	iterate = *stack;
-	rot = malloc(sizeof(t_intlist));
-	rot->content = (*stack)->content;
-	rot->next = NULL;
-	while (iterate->next != NULL)
-		iterate = iterate->next;
-	iterate->next = rot;
-	first_node = *stack;
+	tmp = *stack;
+	rot = *stack;
 	*stack = (*stack)->next;
-	free(first_node);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = rot;
+	rot->next = NULL;
 	write(1, "rb\n", 3);
 }
 
@@ -63,17 +55,13 @@ void	reverse_rotate_b(t_intlist **stack)
 {
 	t_intlist	*iterate;
 	t_intlist	*rot;
-	t_intlist	*last_node;
 
 	iterate = *stack;
-	while (iterate->next->next != NULL)
+	while (iterate->next->next)
 		iterate = iterate->next;
-	rot = malloc(sizeof(t_intlist));
-	rot->content = iterate->next->content;
+	rot = iterate->next;
 	rot->next = (*stack);
 	(*stack) = rot;
-	last_node = iterate->next;
 	iterate->next = NULL;
-	free(last_node);
 	write(1, "rrb\n", 4);
 }

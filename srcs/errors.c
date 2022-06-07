@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:12:47 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/24 17:12:51 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:04:59 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int	check_if_number(char *arg)
 
 	i = -1;
 	if (arg[0] == '-')
+	{
+		if (!(arg[1] >= '0' && arg[1] <= '9'))
+			return (0);
 		++i;
+	}
 	while (arg[++i])
 		if (!(arg[i] >= '0' && arg[i] <= '9'))
 			return (0);
@@ -34,7 +38,7 @@ int	check_if_int(char *arg)
 	return (1);
 }
 
-int	check_if_dup(char **args, int count, int mp_strs)
+int	check_if_dup(char **args, int count)
 {
 	int	i;
 	int	j;
@@ -45,8 +49,7 @@ int	check_if_dup(char **args, int count, int mp_strs)
 		j = i + 1;
 		while (j < count)
 		{
-			if (ft_strcmp((char *)args[i + mp_strs],
-					(char *)args[j + mp_strs]) == 0)
+			if (ft_strcmp((char *)args[i], (char *)args[j]) == 0)
 				return (1);
 			++j;
 		}
@@ -55,23 +58,19 @@ int	check_if_dup(char **args, int count, int mp_strs)
 	return (0);
 }
 
-int	check_errors(char **splitted, int argc, int mp_strs)
+int	check_errors(char **splitted, int argc)
 {
 	int		i;
 
 	i = -1;
-	if (mp_strs == 1)
-		++i;
 	while (splitted[++i])
 		if (!(check_if_number(splitted[i])))
 			return (1);
 	i = -1;
-	if (mp_strs == 1)
-		++i;
 	while (splitted[++i])
 		if (!(check_if_int(splitted[i])))
 			return (1);
-	if (check_if_dup(splitted, argc - mp_strs, mp_strs))
+	if (check_if_dup(splitted, argc))
 		return (1);
 	return (0);
 }

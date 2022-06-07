@@ -6,21 +6,35 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:41:01 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/26 17:16:35 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:01:48 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	minimum(t_intlist **stack)
+{
+	t_intlist	*tmp;
+	int			min;
+
+	tmp = *stack;
+	min = (*stack)->content;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		if (min > tmp->content)
+			min = tmp->content;
+	}
+	return (min);
+}
+
 void	four_to_nine(int count, t_intlist **a, t_intlist **b)
 {
-	t_intlist	*iterate;
 	int			sm;
 
-	iterate = (*a);
 	while (--count >= 0)
 	{
-		sm = get_min(a, count);
+		sm = minimum(a);
 		rotate_stack_a(a, sm);
 		push_b(a, b);
 	}
@@ -50,10 +64,4 @@ void	small(int count, t_intlist **stack_a, t_intlist **stack_b)
 		three(stack_a);
 	else if (count >= 4 && count <= 9)
 		four_to_nine(count - 3, stack_a, stack_b);
-	/*printf("\n");
-	while ((*stack_a))
-	{
-		printf("%d\n", (*stack_a)->content);
-		(*stack_a) = (*stack_a)->next;
-	}*/
 }

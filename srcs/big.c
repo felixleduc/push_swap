@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:41:13 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/26 17:16:33 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:09:13 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ void	align_b(t_intlist **b, int sm)
 
 	if ((*b) == NULL || (*b)->next == NULL)
 		return ;
-	iterate = (*b)->next;
-	sm_2 = (*b)->content;
-	while (iterate)
+	sm_2 = minimum(b);
+	if (sm < sm_2)
 	{
-		if (sm_2 > iterate->content)
-			sm_2 = iterate->content;
-		iterate = iterate->next;
+		rotate_stack_b(b, get_max(b));
+		return ;
 	}
 	iterate = *b;
 	while (iterate)
@@ -35,7 +33,7 @@ void	align_b(t_intlist **b, int sm)
 		iterate = iterate->next;
 	}
 	if (!see_smaller(b, sm))
-		rotate_stack_b(b, get_max(b));
+		rotate_stack_b(b, minimum(b));
 	else
 		rotate_stack_b(b, sm_2);
 }
@@ -60,7 +58,7 @@ void	big(int count, t_intlist **stack_a, t_intlist **stack_b)
 {
 	int	chunk;
 
-	chunk = (count / 22) + 5;
+	chunk = (count / 20) + 5;
 	if (chunk % 2 != 0)
 		++chunk;
 	ten_to_infinite(count, chunk, stack_a, stack_b);

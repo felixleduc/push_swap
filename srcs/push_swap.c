@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:11 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/26 17:16:32 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:09:15 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	clean(t_intlist **stack_a)
 {
 	t_intlist	*tmp;
 
+	if ((*stack_a) == NULL)
+		return ;
 	while (*stack_a)
 	{
 		tmp = *stack_a;
@@ -30,7 +32,7 @@ void	fill_stack(t_intlist **stack_a, t_intlist **stack_b, int c, char **num)
 	int			i;
 
 	i = 0;
-	if (num[0][0] == '.')
+	if (!(num[0][0] >= '0' && num[0][0] <= '9') || num[0][0] == '-')
 		i += 1;
 	*stack_a = (t_intlist *)malloc(sizeof(t_intlist));
 	*stack_b = NULL;
@@ -60,30 +62,28 @@ void	redirect(int count, t_intlist **stack_a, t_intlist **stack_b)
 
 int	main(int argc, char *argv[])
 {
-	int			mp_strs;
 	char		**splitted;
 	t_intlist	*stack_a;
 	t_intlist	*stack_b;
 
-	mp_strs = 0;
 	splitted = NULL;
-	if (argc > 2)
+	if (argc >= 2)
 	{
-		splitted = argv;
-		++mp_strs;
-	}
-	else if (argc == 2)
-	{
-		splitted = ft_split(argv[1], 32);
+		if (argc == 2)
+			splitted = ft_split(argv[1], 32);
+		else if (argc > 2)
+			splitted = rm_first(argv, argc);
 		argc = ft_len(splitted);
 	}
-	if (splitted != NULL && check_errors(splitted, argc, mp_strs))
-		write(1, "Error\n", 6);
+	if (splitted != NULL && check_errors(splitted, argc))
+		write(2, "Error\n", 6);
 	else if (splitted != NULL)
 	{
 		fill_stack(&stack_a, &stack_b, argc - 1, splitted);
-		redirect(list_len(&stack_a), &stack_a, &stack_b);
+		redirect(argc, &stack_a, &stack_b);
+		clean(&stack_a);
 	}
-	clean(&stack_a);
+	if (splitted != NULL)
+		clean_str(splitted);
 	return (0);
 }

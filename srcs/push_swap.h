@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:35 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/26 17:16:36 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:09:16 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	fill_stack(t_intlist **stack_a, t_intlist **stack_b, int c, char **num);
 void	redirect(int count, t_intlist **stack_a, t_intlist **stack_b);
 void	clean(t_intlist **stack_a);
 
-int		check_errors(char **splitted, int argc, int mp_strs);
-int		check_if_dup(char **args, int count, int mp_strs);
+int		check_errors(char **splitted, int argc);
+int		check_if_dup(char **args, int count);
 int		check_if_int(char *arg);
 int		check_if_number(char *arg);
 
@@ -41,6 +41,7 @@ void	three(t_intlist **stack_a);
 void	four_to_nine(int count, t_intlist **a, t_intlist **b);
 void	ten_to_infinite(int count, int chunk, t_intlist **a, t_intlist **b);
 void	align_b(t_intlist **b, int sm);
+int		minimum(t_intlist **stack);
 
 int		find_index(t_intlist **a, int c);
 int		list_len(t_intlist **stack);
