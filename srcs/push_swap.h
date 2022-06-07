@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:00:35 by fleduc            #+#    #+#             */
-/*   Updated: 2022/06/07 15:50:13 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/07 16:00:09 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h> //a supprimer
 
 typedef struct s_intlist
 {
