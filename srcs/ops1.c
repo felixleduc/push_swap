@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:11:10 by fleduc            #+#    #+#             */
-/*   Updated: 2022/05/24 17:14:14 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/13 10:58:37 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap_a(t_intlist **stack)
 {
 	t_intlist	*tmp;
 
+	if (!(*stack && (*stack)->next))
+		return ;
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = (*stack);
@@ -41,6 +43,8 @@ void	rotate_a(t_intlist **stack)
 	t_intlist	*rot;
 	t_intlist	*tmp;
 
+	if (!(*stack && (*stack)->next))
+		return ;
 	tmp = *stack;
 	rot = *stack;
 	*stack = (*stack)->next;
@@ -56,6 +60,8 @@ void	reverse_rotate_a(t_intlist **stack)
 	t_intlist	*iterate;
 	t_intlist	*rot;
 
+	if (!(*stack && (*stack)->next))
+		return ;
 	iterate = *stack;
 	while (iterate->next->next)
 		iterate = iterate->next;

@@ -6,7 +6,7 @@
 /*   By: fleduc <fleduc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:02:23 by fleduc            #+#    #+#             */
-/*   Updated: 2022/06/07 11:34:36 by fleduc           ###   ########.fr       */
+/*   Updated: 2022/06/09 11:43:10 by fleduc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	check(int count, t_intlist **stack_a, t_intlist **stack_b)
 	{
 		if (do_op(line, stack_a, stack_b))
 		{
+			free(line);
 			write(2, "Error\n", 6);
 			return ;
 		}
